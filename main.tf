@@ -29,7 +29,7 @@ locals {
 }
 
 resource "aws_route_table_association" "rt_association" {
-  count          = local.subnet_id != null || var.gateway_id != null ? 1 : 0
+  count          = var.subnet_name != null || var.subnet_id != null || var.gateway_id != null ? 1 : 0
   route_table_id = aws_route_table.rt.id
   subnet_id      = local.subnet_id
   gateway_id     = var.gateway_id
